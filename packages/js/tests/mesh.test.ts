@@ -63,8 +63,8 @@ describe("mesh", () => {
 
       const found = registry.get("test:issuer");
       expect(found).toBeDefined();
-      expect(found!.issuerId).toBe("test:issuer");
-      expect(found!.publicKeyPem).toBe(keyAlpha.publicKeyPem);
+      expect(found?.issuerId).toBe("test:issuer");
+      expect(found?.publicKeyPem).toBe(keyAlpha.publicKeyPem);
       expect(registry.size).toBe(1);
     });
 
@@ -90,7 +90,7 @@ describe("mesh", () => {
       const [issuerId, issuer] = registry.resolveFromJwt(proof);
       expect(issuerId).toBe("alpha");
       expect(issuer).toBeDefined();
-      expect(issuer!.displayName).toBe("Alpha");
+      expect(issuer?.displayName).toBe("Alpha");
     });
 
     it("listIssuers returns all registered issuers", () => {

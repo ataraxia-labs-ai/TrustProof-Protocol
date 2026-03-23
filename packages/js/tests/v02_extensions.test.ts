@@ -71,14 +71,14 @@ describe("v0.2 extensions: protocol_refs and vc_profile", () => {
 
     const claims = result.claims as Claims;
     expect(claims.protocol_refs).toBeDefined();
-    expect(claims.protocol_refs!.verifiable_intent_id).toBe("vi_abc123");
-    expect(claims.protocol_refs!.ap2_mandate_id).toBe("mandate_xyz");
-    expect(claims.protocol_refs!.ap2_mandate_type).toBe("intent");
-    expect(claims.protocol_refs!.a2a_task_id).toBe("task_001");
-    expect(claims.protocol_refs!.acp_checkout_id).toBe("checkout_session_42");
-    expect(claims.protocol_refs!.x402_payment_hash).toBe("0xdeadbeef");
-    expect(claims.protocol_refs!.mcp_tool_call_id).toBe("call_99");
-    expect(claims.protocol_refs!.upstream_proof).toBe("a".repeat(64));
+    expect(claims.protocol_refs?.verifiable_intent_id).toBe("vi_abc123");
+    expect(claims.protocol_refs?.ap2_mandate_id).toBe("mandate_xyz");
+    expect(claims.protocol_refs?.ap2_mandate_type).toBe("intent");
+    expect(claims.protocol_refs?.a2a_task_id).toBe("task_001");
+    expect(claims.protocol_refs?.acp_checkout_id).toBe("checkout_session_42");
+    expect(claims.protocol_refs?.x402_payment_hash).toBe("0xdeadbeef");
+    expect(claims.protocol_refs?.mcp_tool_call_id).toBe("call_99");
+    expect(claims.protocol_refs?.upstream_proof).toBe("a".repeat(64));
   });
 
   it("generates and verifies claims with vc_profile", async () => {
@@ -107,14 +107,14 @@ describe("v0.2 extensions: protocol_refs and vc_profile", () => {
 
     const claims = result.claims as Claims;
     expect(claims.vc_profile).toBeDefined();
-    expect(claims.vc_profile!.vc_version).toBe("2.0");
-    expect(claims.vc_profile!.credential_type).toEqual([
+    expect(claims.vc_profile?.vc_version).toBe("2.0");
+    expect(claims.vc_profile?.credential_type).toEqual([
       "VerifiableCredential",
       "TrustProofCredential"
     ]);
-    expect(claims.vc_profile!.issuer_did).toBe("did:web:verdicto.dev");
-    expect(claims.vc_profile!.subject_did).toBe("did:key:z6MkAgent123");
-    expect(claims.vc_profile!.delegation_did).toBe("did:key:z6MkHuman456");
+    expect(claims.vc_profile?.issuer_did).toBe("did:web:verdicto.dev");
+    expect(claims.vc_profile?.subject_did).toBe("did:key:z6MkAgent123");
+    expect(claims.vc_profile?.delegation_did).toBe("did:key:z6MkHuman456");
   });
 
   it("generates and verifies claims with both protocol_refs and vc_profile", async () => {
@@ -140,10 +140,10 @@ describe("v0.2 extensions: protocol_refs and vc_profile", () => {
     expect(result.errors).toEqual([]);
 
     const claims = result.claims as Claims;
-    expect(claims.protocol_refs!.verifiable_intent_id).toBe("vi_combined_test");
-    expect(claims.protocol_refs!.a2a_task_id).toBe("task_combined");
-    expect(claims.vc_profile!.vc_version).toBe("2.0");
-    expect(claims.vc_profile!.issuer_did).toBe("did:web:example.com");
+    expect(claims.protocol_refs?.verifiable_intent_id).toBe("vi_combined_test");
+    expect(claims.protocol_refs?.a2a_task_id).toBe("task_combined");
+    expect(claims.vc_profile?.vc_version).toBe("2.0");
+    expect(claims.vc_profile?.issuer_did).toBe("did:web:example.com");
   });
 
   it("protocol_refs accepts custom additional properties", async () => {
@@ -164,8 +164,8 @@ describe("v0.2 extensions: protocol_refs and vc_profile", () => {
     expect(result.ok).toBe(true);
 
     const claims = result.claims as Claims;
-    expect(claims.protocol_refs!.verifiable_intent_id).toBe("vi_custom");
-    expect(claims.protocol_refs!.custom_vendor_field).toBe("vendor_value_123");
+    expect(claims.protocol_refs?.verifiable_intent_id).toBe("vi_custom");
+    expect(claims.protocol_refs?.custom_vendor_field).toBe("vendor_value_123");
   });
 
   it("envelope without protocol_refs or vc_profile still validates (backward compatible)", async () => {
