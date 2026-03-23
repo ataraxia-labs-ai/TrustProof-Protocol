@@ -12,12 +12,12 @@ It does not publish tags or releases.
   - [ ] `packages/py/pyproject.toml`
   - [ ] `package.json` (root, if used)
 - [ ] `CHANGELOG.md` includes `[0.1.0]` with date `2026-02-25` and release highlights
-- [ ] Docs site reachable: <https://ataraxialab-ai.github.io/TrustProof-Protocol/>
+- [ ] Docs site reachable: <https://ataraxia-labs-ai.github.io/TrustProof-Protocol/>
 
 ## 2) Clean-Clone Verification (Executable)
 
 ```bash
-git clone https://github.com/Ataraxialab-ai/TrustProof-Protocol.git
+git clone https://github.com/ataraxia-labs-ai/TrustProof-Protocol.git
 cd TrustProof-Protocol
 pnpm install
 ```
@@ -116,7 +116,7 @@ Expected key output (short):
 - [ ] `docs/demo_runbook.md` commands and expected outputs are accurate
 - [ ] `docs/spec.md` links resolve (`../spec/trustproof.schema.json`, `../spec/examples/`, `../spec/vectors/`)
 - [ ] `docs/security.md` aligns with current API names (`generate`, `verify`, `append`, `verifyChain`)
-- [ ] Pages docs index resolves: <https://ataraxialab-ai.github.io/TrustProof-Protocol/>
+- [ ] Pages docs index resolves: <https://ataraxia-labs-ai.github.io/TrustProof-Protocol/>
 
 ## 8) Release Steps (Document Only, Do Not Run in This PR)
 

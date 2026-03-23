@@ -30,9 +30,9 @@ Desired outcome:
   - [`docs/integrations/langchain.md`](docs/integrations/langchain.md)
   - [`docs/integrations/openai_agents.md`](docs/integrations/openai_agents.md)
 - [x] StackBlitz playground:
-  - https://stackblitz.com/github/Ataraxialab-ai/TrustProof-Protocol/tree/main/examples/stackblitz
+  - https://stackblitz.com/github/ataraxia-labs-ai/TrustProof-Protocol/tree/main/examples/stackblitz
 - [x] GitHub Pages docs:
-  - https://ataraxialab-ai.github.io/TrustProof-Protocol/
+  - https://ataraxia-labs-ai.github.io/TrustProof-Protocol/
 
 ## Release Steps
 

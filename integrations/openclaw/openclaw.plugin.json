@@ -1,0 +1,48 @@
+{
+  "id": "verdicto-trustproof",
+  "name": "Verdicto TrustProof",
+  "description": "Cryptographic audit trails for agent actions. Every tool call, browser action, and API request gets a signed, tamper-evident TrustProof.",
+  "version": "0.1.0",
+  "author": "Ataraxia Labs",
+  "homepage": "https://github.com/ataraxia-labs-ai/TrustProof-Protocol",
+  "capabilities": ["hooks", "tools"],
+  "config": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "agentId": {
+          "type": "string",
+          "default": "openclaw-agent",
+          "description": "Subject identifier for TrustProofs"
+        },
+        "traceTools": {
+          "type": "boolean",
+          "default": true,
+          "description": "Generate proofs for tool calls"
+        },
+        "traceBrowser": {
+          "type": "boolean",
+          "default": true,
+          "description": "Generate proofs for browser actions"
+        },
+        "traceApiCalls": {
+          "type": "boolean",
+          "default": false,
+          "description": "Generate proofs for outbound API calls"
+        },
+        "verdictoApiUrl": {
+          "type": "string",
+          "description": "Optional: Verdicto API URL for dashboard persistence"
+        },
+        "verdictoApiKey": {
+          "type": "string",
+          "description": "Optional: Verdicto API key"
+        },
+        "policyPath": {
+          "type": "string",
+          "description": "Path to OpenShell YAML policy file for proof context"
+        }
+      }
+    }
+  }
+}

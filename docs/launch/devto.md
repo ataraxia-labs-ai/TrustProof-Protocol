@@ -38,7 +38,7 @@ The envelope binds:
 
 Reference schema:
 
-- https://github.com/Ataraxialab-ai/TrustProof-Protocol/blob/main/spec/trustproof.schema.json
+- https://github.com/ataraxia-labs-ai/TrustProof-Protocol/blob/main/spec/trustproof.schema.json
 
 ## Spec + golden vectors (why it matters)
 
@@ -62,16 +62,16 @@ You should see schema and vector pass lines ending in:
 
 Reference docs:
 
-- Protocol docs (Pages): https://ataraxialab-ai.github.io/TrustProof-Protocol/
-- Spec notes: https://github.com/Ataraxialab-ai/TrustProof-Protocol/blob/main/docs/spec.md
-- Vector definitions: https://github.com/Ataraxialab-ai/TrustProof-Protocol/tree/main/spec/vectors
+- Protocol docs (Pages): https://ataraxia-labs-ai.github.io/TrustProof-Protocol/
+- Spec notes: https://github.com/ataraxia-labs-ai/TrustProof-Protocol/blob/main/docs/spec.md
+- Vector definitions: https://github.com/ataraxia-labs-ai/TrustProof-Protocol/tree/main/spec/vectors
 
 ## Quickstart
 
 Clone and run:
 
 ```bash
-git clone https://github.com/Ataraxialab-ai/TrustProof-Protocol.git
+git clone https://github.com/ataraxia-labs-ai/TrustProof-Protocol.git
 cd TrustProof-Protocol
 pnpm install
 pnpm spec:validate
@@ -161,8 +161,8 @@ Natural next layers on top of protocol primitives:
 
 If you want to review or adopt it, start from the runbook:
 
-- https://github.com/Ataraxialab-ai/TrustProof-Protocol/blob/main/docs/demo_runbook.md
+- https://github.com/ataraxia-labs-ai/TrustProof-Protocol/blob/main/docs/demo_runbook.md
 
 And protocol docs:
 
-- https://ataraxialab-ai.github.io/TrustProof-Protocol/
+- https://ataraxia-labs-ai.github.io/TrustProof-Protocol/

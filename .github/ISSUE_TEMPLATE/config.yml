@@ -1,11 +1,11 @@
 blank_issues_enabled: false
 contact_links:
   - name: Protocol documentation
-    url: https://ataraxialab-ai.github.io/TrustProof-Protocol/
+    url: https://ataraxia-labs-ai.github.io/TrustProof-Protocol/
     about: Start with the protocol docs, spec references, and verifier guidance.
   - name: Spec and vectors
-    url: https://github.com/Ataraxialab-ai/TrustProof-Protocol/tree/main/spec
+    url: https://github.com/ataraxia-labs-ai/TrustProof-Protocol/tree/main/spec
     about: Review schema/examples/vectors before filing protocol behavior issues.
   - name: Demo runbook
-    url: https://github.com/Ataraxialab-ai/TrustProof-Protocol/blob/main/docs/demo_runbook.md
+    url: https://github.com/ataraxia-labs-ai/TrustProof-Protocol/blob/main/docs/demo_runbook.md
     about: Use the runbook to produce reproducible command output in issues.

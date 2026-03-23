@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import hmac
 import json
 import re
 from hashlib import sha256
@@ -162,7 +163,7 @@ def verify_chain(tokens: list[str], public_key_pem: str) -> dict[str, Any]:
 
         canonical_event_material = compute_canonical_event_material(claims)
         recomputed_entry_hash = compute_entry_hash(prev_hash_norm, canonical_event_material)
-        if recomputed_entry_hash.lower() != entry_hash_norm:
+        if not hmac.compare_digest(recomputed_entry_hash.lower(), entry_hash_norm):
             return {
                 "ok": False,
                 "errors": [
@@ -186,7 +187,7 @@ def verify_chain(tokens: list[str], public_key_pem: str) -> dict[str, Any]:
                         )
                     ],
                 }
-        elif prev_hash_norm != previous_entry_hash:
+        elif not hmac.compare_digest(prev_hash_norm, previous_entry_hash):
             return {
                 "ok": False,
                 "errors": [

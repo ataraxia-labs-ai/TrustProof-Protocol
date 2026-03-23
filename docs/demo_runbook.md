@@ -13,7 +13,7 @@ This demo proves three concrete properties: (1) action outcomes are emitted as s
 ## 3) Clean Setup
 
 ```bash
-git clone https://github.com/Ataraxialab-ai/TrustProof-Protocol.git
+git clone https://github.com/ataraxia-labs-ai/TrustProof-Protocol.git
 cd TrustProof-Protocol
 pnpm install
 ```
@@ -133,7 +133,7 @@ Expected (short):
   3. CLI verify + inspect
   4. tamper failure
 - Optional browser tab:
-  - `https://ataraxialab-ai.github.io/TrustProof-Protocol/`
+  - `https://ataraxia-labs-ai.github.io/TrustProof-Protocol/`
   - briefly open `spec/README` and vectors reference
 
 ## 6) Troubleshooting

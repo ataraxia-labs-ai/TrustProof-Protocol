@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "verdicto": {
+      "command": "verdicto-mcp",
+      "env": {
+        "VERDICTO_API_URL": "http://127.0.0.1:8000",
+        "VERDICTO_API_KEY": "YOUR_API_KEY"
+      }
+    }
+  }
+}

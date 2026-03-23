@@ -119,4 +119,4 @@ Reference docs:
 
 - Runbook: [docs/demo_runbook.md](./demo_runbook.md)
 - Spec guide: [docs/spec.md](./spec.md)
-- Protocol docs: <https://ataraxialab-ai.github.io/TrustProof-Protocol/>
+- Protocol docs: <https://ataraxia-labs-ai.github.io/TrustProof-Protocol/>

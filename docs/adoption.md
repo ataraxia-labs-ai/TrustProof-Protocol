@@ -105,4 +105,4 @@ Start with one action type (example: `payout.initiate` or one agent tool action)
 
 - Spec: [docs/spec.md](./spec.md)
 - Security: [docs/security.md](./security.md)
-- Docs site: <https://ataraxialab-ai.github.io/TrustProof-Protocol/>
+- Docs site: <https://ataraxia-labs-ai.github.io/TrustProof-Protocol/>

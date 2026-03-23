@@ -1,0 +1,32 @@
+{
+  "name": "verdicto-openclaw",
+  "version": "0.1.0",
+  "description": "TrustProof plugin for OpenClaw — cryptographic audit trails for every agent action",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --import tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "openclaw",
+    "openclaw-plugin",
+    "openclaw-extension",
+    "trustproof",
+    "verdicto",
+    "ai-safety",
+    "audit-trail",
+    "trust"
+  ],
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@trustproof/sdk": "file:../../packages/js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.16.5",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.3"
+  }
+}

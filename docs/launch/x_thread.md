@@ -4,7 +4,7 @@
 
 AI agents need receipts, not just logs.  
 TrustProof Protocol is OSS for **signed action receipts** (Ed25519 JWT + tamper-evident chain).  
-Repo: https://github.com/Ataraxialab-ai/TrustProof-Protocol  
+Repo: https://github.com/ataraxia-labs-ai/TrustProof-Protocol  
 [screenshot: README + protocol definition]
 
 ## 2/10
@@ -82,7 +82,7 @@ pnpm --filter @trustproof/sdk example:openai-agents
 
 Docs + runbook:
 
-- https://ataraxialab-ai.github.io/TrustProof-Protocol/
-- https://github.com/Ataraxialab-ai/TrustProof-Protocol/blob/main/docs/demo_runbook.md
+- https://ataraxia-labs-ai.github.io/TrustProof-Protocol/
+- https://github.com/ataraxia-labs-ai/TrustProof-Protocol/blob/main/docs/demo_runbook.md
 
 If this is useful, star the repo and share feedback on spec fields, chain rule, and integrations.
