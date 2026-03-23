@@ -89,7 +89,10 @@ def _format_not_verified(errors: list[dict[str, Any]]) -> str:
 
 
 def _build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="trustproof", description="TrustProof CLI v0")
+    parser = argparse.ArgumentParser(
+        prog="trustproof",
+        description="TrustProof CLI — Signed, verifiable action receipts for AI agents.",
+    )
     subparsers = parser.add_subparsers(dest="command")
 
     verify_parser = subparsers.add_parser("verify", help="Verify a signed TrustProof JWT")
@@ -101,6 +104,9 @@ def _build_parser() -> argparse.ArgumentParser:
     inspect_parser.add_argument("jwt", help="JWT token")
     inspect_parser.add_argument("--json", action="store_true", help="Emit machine-readable JSON")
 
+    subparsers.add_parser("version", help="Print version")
+    subparsers.add_parser("schema", help="Print the TrustProof JSON Schema to stdout")
+
     return parser
 
 
@@ -110,6 +116,21 @@ def main(argv: list[str] | None = None) -> int:
 
     if not args.command:
         parser.print_help()
+        return 0
+
+    if args.command == "version":
+        from . import __version__
+
+        print(f"trustproof {__version__}")
+        return 0
+
+    if args.command == "schema":
+        schema_path = Path(__file__).resolve().parent.parent.parent.parent / "spec" / "trustproof.schema.json"
+        if not schema_path.exists():
+            # Fallback: try relative to installed package (won't have spec/)
+            print('{"error": "Schema file not found. Install from source to access schema."}', file=sys.stderr)
+            return 1
+        print(schema_path.read_text(encoding="utf-8"), end="")
         return 0
 
     if args.command == "inspect":

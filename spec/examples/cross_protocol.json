@@ -1,0 +1,50 @@
+{
+  "_comment": "TrustProof v0.2 example: Cross-protocol proof linking a LangChain agent action to AP2 payment mandate and Mastercard Verifiable Intent, with W3C VC interop.",
+  "subject": {
+    "type": "agent",
+    "id": "agent:langchain:shopping-assistant-v2"
+  },
+  "action": "langchain.tool_call",
+  "resource": {
+    "type": "api",
+    "id": "merchant:electronics-store:checkout"
+  },
+  "policy": {
+    "policy_v": "v0",
+    "scopes": ["checkout.purchase"],
+    "constraints": {
+      "max_amount_cents": 50000,
+      "currency_allowlist": ["USD"],
+      "merchant_allowlist": ["merchant:electronics-store"]
+    }
+  },
+  "result": {
+    "decision": "allow",
+    "reason_codes": []
+  },
+  "hashes": {
+    "input_hash": "3732c9e1e98fcd5ddec40073669fc1e822c017eeaf7dfc6b74cdf8265d0a373d",
+    "output_hash": "bba790d947b14ae2e0455f6e8aabc0c24bcd4a30dfb267123818c6f2e356442a"
+  },
+  "timestamp": "2026-03-21T14:30:00Z",
+  "jti": "jti_v006_vc_profile",
+  "chain": {
+    "prev_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "entry_hash": "10e04719cadd7d6b02efd1431ba5bb100048c98b7bf1e8d16564bd1c602994e1"
+  },
+  "protocol_refs": {
+    "_comment": "Links this TrustProof to external protocol artifacts for cross-protocol verification.",
+    "ap2_mandate_id": "mandate_cart_abc123",
+    "ap2_mandate_type": "cart",
+    "verifiable_intent_id": "vi_mc_def456",
+    "mcp_tool_call_id": "mcp_call_789"
+  },
+  "vc_profile": {
+    "_comment": "Maps TrustProof claims to W3C Verifiable Credential Data Model 2.0 for VC ecosystem interop.",
+    "vc_version": "2.0",
+    "credential_type": ["VerifiableCredential", "TrustProofCredential"],
+    "issuer_did": "did:web:verdicto.dev",
+    "subject_did": "did:key:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK",
+    "delegation_did": "did:key:z6MkpTHR8VNs5zAqPSCsa7HRaGKm3FCbgfPYRzFbNhBsqd2H"
+  }
+}

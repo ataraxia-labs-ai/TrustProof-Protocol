@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hmac
 import re
 from typing import Any
 
@@ -109,7 +110,7 @@ def verify(
         actual_input_hash = hashes_obj.get("input_hash") if isinstance(hashes_obj, dict) else None
         expected_input_hash = sha256_hex(canonical_json(expected_input))
         if not isinstance(actual_input_hash, str) or (
-            actual_input_hash.lower() != expected_input_hash.lower()
+            not hmac.compare_digest(actual_input_hash.lower(), expected_input_hash.lower())
         ):
             errors.append(
                 _error(
@@ -126,7 +127,7 @@ def verify(
         )
         expected_output_hash = sha256_hex(canonical_json(expected_output))
         if not isinstance(actual_output_hash, str) or (
-            actual_output_hash.lower() != expected_output_hash.lower()
+            not hmac.compare_digest(actual_output_hash.lower(), expected_output_hash.lower())
         ):
             errors.append(
                 _error(

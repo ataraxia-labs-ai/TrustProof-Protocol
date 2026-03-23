@@ -139,5 +139,5 @@ Expected output cue:
 - Python tests pass
 
 ### Close (2:45-3:00)
-- Show docs site: <https://ataraxialab-ai.github.io/TrustProof-Protocol/>
+- Show docs site: <https://ataraxia-labs-ai.github.io/TrustProof-Protocol/>
 - Talk: "Feedback requested on fields, chain semantics, and integration coverage."

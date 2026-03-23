@@ -33,7 +33,8 @@
     },
     "action": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "description": "Operation name. Free-form string. Recommended action type prefixes for agent framework interoperability: checkout.purchase, checkout.refund (commerce); openclaw.claw_action, openclaw.tool_use, openclaw.file_access, openclaw.web_browse (OpenClaw/NemoClaw); langchain.tool_call, langchain.chain_step, langchain.llm_decision (LangChain); crewai.task_execution, crewai.delegation (CrewAI); autoresearch.experiment, autoresearch.code_modification, autoresearch.evaluation (Karpathy autoresearch); a2a.agent_message, a2a.task_assignment (Google A2A); mcp.tool_invocation (Anthropic MCP). Custom prefixes are allowed."
     },
     "resource": {
       "type": "object",
@@ -153,6 +154,76 @@
           "pattern": "^[a-fA-F0-9]{64}$"
         }
       }
+    },
+    "protocol_refs": {
+      "type": "object",
+      "description": "Optional references to artifacts in external trust/commerce protocols. Enables cross-protocol verification chains.",
+      "properties": {
+        "verifiable_intent_id": {
+          "type": "string",
+          "description": "Reference to a Mastercard Verifiable Intent record. Links this TrustProof to a payment-layer authorization proof."
+        },
+        "ap2_mandate_id": {
+          "type": "string",
+          "description": "Reference to a Google AP2 Intent Mandate or Cart Mandate. Links this TrustProof to an agentic commerce authorization."
+        },
+        "ap2_mandate_type": {
+          "type": "string",
+          "enum": ["intent", "cart", "payment"],
+          "description": "Type of AP2 mandate referenced: intent (user instruction), cart (specific purchase approval), payment (payment network authorization)."
+        },
+        "a2a_task_id": {
+          "type": "string",
+          "description": "Reference to a Google A2A protocol task. Links this TrustProof to an agent-to-agent interaction."
+        },
+        "acp_checkout_id": {
+          "type": "string",
+          "description": "Reference to a Stripe/OpenAI Agentic Commerce Protocol checkout session."
+        },
+        "x402_payment_hash": {
+          "type": "string",
+          "description": "Reference to a Coinbase x402 on-chain payment hash. Links this TrustProof to a crypto payment."
+        },
+        "mcp_tool_call_id": {
+          "type": "string",
+          "description": "Reference to an Anthropic MCP tool invocation. Links this TrustProof to a specific tool call within an MCP session."
+        },
+        "upstream_proof": {
+          "type": "string",
+          "description": "SHA-256 hash of an upstream TrustProof JWT from a different issuer/platform. Creates cross-platform proof mesh linking."
+        }
+      },
+      "additionalProperties": true
+    },
+    "vc_profile": {
+      "type": "object",
+      "description": "Optional W3C Verifiable Credential compatible profile. Maps TrustProof claims to VC data model (https://www.w3.org/TR/vc-data-model-2.0/) for interoperability with VC ecosystems.",
+      "properties": {
+        "vc_version": {
+          "type": "string",
+          "const": "2.0",
+          "description": "W3C VC Data Model version."
+        },
+        "credential_type": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["VerifiableCredential", "TrustProofCredential"],
+          "description": "W3C VC type array. Always includes VerifiableCredential + TrustProofCredential."
+        },
+        "issuer_did": {
+          "type": "string",
+          "description": "DID of the TrustProof issuer (e.g., did:web:verdicto.dev or did:key:z6Mk...). Maps to VC issuer field."
+        },
+        "subject_did": {
+          "type": "string",
+          "description": "DID of the agent/actor. Maps to VC credentialSubject.id."
+        },
+        "delegation_did": {
+          "type": "string",
+          "description": "DID of the human principal who delegated authority to the agent. Links KYH identity to KYA action."
+        }
+      },
+      "additionalProperties": false
     }
   }
 }

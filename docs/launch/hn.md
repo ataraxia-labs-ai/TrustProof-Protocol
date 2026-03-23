@@ -21,9 +21,9 @@ pnpm --filter @trustproof/sdk example:agent-actions
 
 Links:
 
-- Repo: https://github.com/Ataraxialab-ai/TrustProof-Protocol
-- Docs (GitHub Pages): https://ataraxialab-ai.github.io/TrustProof-Protocol/
-- Demo runbook: https://github.com/Ataraxialab-ai/TrustProof-Protocol/blob/main/docs/demo_runbook.md
+- Repo: https://github.com/ataraxia-labs-ai/TrustProof-Protocol
+- Docs (GitHub Pages): https://ataraxia-labs-ai.github.io/TrustProof-Protocol/
+- Demo runbook: https://github.com/ataraxia-labs-ai/TrustProof-Protocol/blob/main/docs/demo_runbook.md
 
 Feedback welcome on:
 

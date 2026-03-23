@@ -1,0 +1,60 @@
+{
+  "id": "v006_vc_profile",
+  "description": "LangChain agent tool call with AP2 payment mandate, Mastercard Verifiable Intent, MCP tool call reference, and W3C VC profile. Tests v0.2 cross-protocol and VC interop fields.",
+  "input": {
+    "subject": {
+      "type": "agent",
+      "id": "agent:langchain:shopping-assistant-v2"
+    },
+    "action": "langchain.tool_call",
+    "resource": {
+      "type": "api",
+      "id": "merchant:electronics-store:checkout"
+    },
+    "policy": {
+      "policy_v": "v0",
+      "scopes": [
+        "checkout.purchase"
+      ],
+      "constraints": {
+        "max_amount_cents": 50000,
+        "currency_allowlist": [
+          "USD"
+        ],
+        "merchant_allowlist": [
+          "merchant:electronics-store"
+        ]
+      }
+    },
+    "timestamp": "2026-03-21T14:30:00Z",
+    "jti": "jti_v006_vc_profile"
+  },
+  "output": {
+    "decision": "allow",
+    "reason_codes": []
+  },
+  "canonical_input": "{\"action\":\"langchain.tool_call\",\"jti\":\"jti_v006_vc_profile\",\"policy\":{\"constraints\":{\"currency_allowlist\":[\"USD\"],\"max_amount_cents\":50000,\"merchant_allowlist\":[\"merchant:electronics-store\"]},\"policy_v\":\"v0\",\"scopes\":[\"checkout.purchase\"]},\"resource\":{\"id\":\"merchant:electronics-store:checkout\",\"type\":\"api\"},\"subject\":{\"id\":\"agent:langchain:shopping-assistant-v2\",\"type\":\"agent\"},\"timestamp\":\"2026-03-21T14:30:00Z\"}",
+  "canonical_output": "{\"decision\":\"allow\",\"reason_codes\":[]}",
+  "expected": {
+    "input_hash_hex": "3732c9e1e98fcd5ddec40073669fc1e822c017eeaf7dfc6b74cdf8265d0a373d",
+    "output_hash_hex": "bba790d947b14ae2e0455f6e8aabc0c24bcd4a30dfb267123818c6f2e356442a",
+    "prev_hash_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+    "canonical_event_material": "{\"action\":\"langchain.tool_call\",\"hashes\":{\"input_hash\":\"3732c9e1e98fcd5ddec40073669fc1e822c017eeaf7dfc6b74cdf8265d0a373d\",\"output_hash\":\"bba790d947b14ae2e0455f6e8aabc0c24bcd4a30dfb267123818c6f2e356442a\"},\"jti\":\"jti_v006_vc_profile\",\"policy\":{\"constraints\":{\"currency_allowlist\":[\"USD\"],\"max_amount_cents\":50000,\"merchant_allowlist\":[\"merchant:electronics-store\"]},\"policy_v\":\"v0\",\"scopes\":[\"checkout.purchase\"]},\"resource\":{\"id\":\"merchant:electronics-store:checkout\",\"type\":\"api\"},\"result\":{\"decision\":\"allow\",\"reason_codes\":[]},\"subject\":{\"id\":\"agent:langchain:shopping-assistant-v2\",\"type\":\"agent\"},\"timestamp\":\"2026-03-21T14:30:00Z\"}",
+    "entry_hash_hex": "10e04719cadd7d6b02efd1431ba5bb100048c98b7bf1e8d16564bd1c602994e1"
+  },
+  "envelope_extensions": {
+    "protocol_refs": {
+      "ap2_mandate_id": "mandate_cart_abc123",
+      "ap2_mandate_type": "cart",
+      "verifiable_intent_id": "vi_mc_def456",
+      "mcp_tool_call_id": "mcp_call_789"
+    },
+    "vc_profile": {
+      "vc_version": "2.0",
+      "credential_type": ["VerifiableCredential", "TrustProofCredential"],
+      "issuer_did": "did:web:verdicto.dev",
+      "subject_did": "did:key:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK",
+      "delegation_did": "did:key:z6MkpTHR8VNs5zAqPSCsa7HRaGKm3FCbgfPYRzFbNhBsqd2H"
+    }
+  }
+}

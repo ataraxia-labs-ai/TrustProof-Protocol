@@ -13,7 +13,7 @@ from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey 
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from trustproof import generate, verify  # noqa: E402
+from trustproof import append, generate, verify, verify_chain  # noqa: E402
 
 
 def _load_allow_claims() -> dict:
@@ -62,3 +62,62 @@ def test_invalid_signature() -> None:
 
     assert result["ok"] is False
     assert any(err.get("code") == "INVALID_SIGNATURE" for err in result["errors"])
+
+
+def test_chain_append_and_verify_chain() -> None:
+    """Generate → append → append → verify_chain passes."""
+    base = _load_allow_claims()
+    private_pem, public_pem = _generate_pem_keypair()
+
+    def _claims(jti: str) -> dict:
+        c = json.loads(json.dumps(base))
+        c["jti"] = jti
+        return c
+
+    proof1 = append(None, _claims("chain_test_1"), private_pem)
+    proof2 = append(proof1, _claims("chain_test_2"), private_pem)
+    proof3 = append(proof2, _claims("chain_test_3"), private_pem)
+
+    result = verify_chain([proof1, proof2, proof3], public_pem)
+    assert result["ok"] is True
+    assert result["errors"] == []
+
+
+def test_tamper_single_byte_fails_verify() -> None:
+    """Modify a byte in JWT payload → verify fails."""
+    claims = _load_allow_claims()
+    private_pem, public_pem = _generate_pem_keypair()
+
+    token = generate(claims, private_pem)
+    parts = token.split(".")
+    # Tamper with the payload (middle section) — more reliable than signature
+    payload = bytearray(parts[1].encode())
+    mid = len(payload) // 2
+    payload[mid] = ord("A") if payload[mid] != ord("A") else ord("B")
+    tampered = f"{parts[0]}.{payload.decode()}.{parts[2]}"
+
+    result = verify(tampered, public_pem)
+    assert result["ok"] is False
+
+
+def test_chain_tamper_breaks_verify_chain() -> None:
+    """Modify one proof in a chain → verify_chain fails."""
+    base = _load_allow_claims()
+    private_pem, public_pem = _generate_pem_keypair()
+
+    def _claims(jti: str) -> dict:
+        c = json.loads(json.dumps(base))
+        c["jti"] = jti
+        return c
+
+    proof1 = append(None, _claims("tamper_1"), private_pem)
+    proof2 = append(proof1, _claims("tamper_2"), private_pem)
+
+    # Tamper with proof1's payload
+    parts = proof1.split(".")
+    payload = bytearray(parts[1].encode())
+    payload[-1] = ord("X") if payload[-1] != ord("X") else ord("Y")
+    tampered = f"{parts[0]}.{payload.decode()}.{parts[2]}"
+
+    result = verify_chain([tampered, proof2], public_pem)
+    assert result["ok"] is False

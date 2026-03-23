@@ -67,7 +67,7 @@ On screen:
 Narration:
 
 "Next steps are webhooks, enterprise verifier deployment, and step-up UX on top of the same protocol.  
-Repo: github.com/Ataraxialab-ai/TrustProof-Protocol."
+Repo: github.com/ataraxia-labs-ai/TrustProof-Protocol."
 
 ---
 

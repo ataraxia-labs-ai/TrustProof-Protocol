@@ -6,6 +6,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-03-21
+
+### Added
+- `protocol_refs` field for cross-protocol linking (Verifiable Intent, AP2, ACP, x402, A2A, MCP, Proof Mesh)
+- `vc_profile` field for W3C Verifiable Credential Data Model 2.0 compatibility
+- Recommended action type prefixes for OpenClaw, LangChain, CrewAI, autoresearch, A2A, MCP
+- Golden vector `v006_vc_profile.json` testing cross-protocol proof with VC profile
+- Cross-protocol example: `spec/examples/cross_protocol.json`
+- Documentation: Protocol References, VC Profile mapping, Agent Framework Action Types, Proof Mesh
+- Updated `why-now.md` with March 2026 market context (Verifiable Intent, AP2, NemoClaw, autoresearch)
+
+### Changed
+- None (backwards-compatible additions only)
+
+### Breaking
+- None (all new fields are optional, v0.1 proofs remain valid)
+
 ## [0.1.0] - 2026-02-25
 ### Added
 - Spec v1 claims envelope schema at `spec/trustproof.schema.json`.
